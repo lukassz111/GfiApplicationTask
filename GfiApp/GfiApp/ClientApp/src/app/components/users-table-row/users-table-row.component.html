@@ -1,0 +1,14 @@
+<div class="container-fluid">
+  <div class="col-xs-1">{{user.id}}</div>
+  <div class="col-xs-2">{{user.name}}</div>
+  <div class="col-xs-2">{{user.surname}}</div>
+  <div class="col-xs-1">{{user.dateOfBirth | date:'dd-LL-yyyy' }}</div>
+  <div class="col-xs-2">{{user.mobileNumber}}</div>
+  <div class="col-xs-2">{{user.city}}, {{user.street}} {{user.houseNumber}}</div>
+  <div class="col-xs-2">
+    <div class="btn-group fullWidth" role="group" aria-label="Edit user">
+      <button type="button" class="btn btn-primary halfWidth">Edit</button>
+      <button type="button" class="btn btn-danger halfWidth">Delete</button>
+    </div>
+  </div>
+</div>
