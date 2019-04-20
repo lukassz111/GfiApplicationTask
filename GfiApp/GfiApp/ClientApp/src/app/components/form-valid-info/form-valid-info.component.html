@@ -1,0 +1,12 @@
+<span *ngIf="input != null && input.control.status!='VALID'">
+  <p *ngIf="(input.control.errors.required)">
+    <small class="form-text text-danger">Required</small>
+  </p>
+
+  <p *ngIf="input.control.errors.minlength && (input.control.errors.minlength.actualLength != input.control.errors.minlength.requiredLength)">
+    <small class="form-text text-danger">Required, {{input.control.errors.minlength.requiredLength}} characters</small>
+  </p>
+  <p>
+    <small *ngIf="(input.control.errors.pattern)" class="form-text text-danger">Invalid data format</small>
+  </p>
+</span>
