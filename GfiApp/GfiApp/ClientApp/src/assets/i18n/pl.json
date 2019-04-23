@@ -1,0 +1,34 @@
+{
+  "EDIT": "Edytuj",
+  "DELETE": "Usuń",
+  "ID": "Id",
+  "NAME": "Imię",
+  "SURNAME": "Nazwisko",
+  "DATE_OF_BIRTH": "Data urodzenia",
+  "MOBILE_NUMBER": "Nr telefonu",
+  "ADDRESS": "adres(miasto + ulica + nr budynku)",
+  "CITY": "Miasto",
+  "STREET": "Ulica",
+  "HOUSE_NUMBER": "Nr budynku",
+
+  "CANCEL": "Anuluj",
+  "SAVE": "Zapisz",
+  "NEXT": "Następny",
+  "SAVE_AND_NEXT": "Zapisz i edytuj następny",
+
+  "VALID": {
+    "REQUIRED": "Wymagane",
+    "IVALID_DATA_FORMAT": "Nieprawidłowy format danych",
+    "NEEDED_CHARACTERS": "Wymagana ilość znaków: {{value}}"
+  },
+
+  "ENTER": {
+    "NAME": "Podaj imię",
+    "SURNAME": "Podaj nazwisko",
+    "DATE_OF_BIRTH": "Podaj datę urodzenia (dd-mm-yyyy)",
+    "MOBILE_NUMBER": "Podaj nr telefonu",
+    "CITY": "Podaj miasto",
+    "STREET": "Podaj ulice",
+    "HOUSE_NUMBER":  "Podaj nr budynku"
+  }
+}

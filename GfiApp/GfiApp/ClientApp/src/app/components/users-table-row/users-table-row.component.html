@@ -1,15 +1,15 @@
 <ng-template #modalTemplate let-modal>
   <div class="modal-header">
-    Edit - {{user.name}} {{user.surname}}
+    {{ 'EDIT' | translate }} - {{user.name}} {{user.surname}}
   </div>
   <div class="modal-body">
     <app-user-edit-form [user]="user" #form></app-user-edit-form>
   </div>
   <div class="modal-footer">
     <div class="btn-group" role="group" aria-label="Edit user">
-      <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
-      <button *ngIf="form.Valid" type="button" class="btn btn-danger" (click)="submit(form)">Save</button>
-      <button *ngIf="!form.Valid" type="button" class="btn btn-danger" disabled>Save</button>
+      <button type="button" class="btn btn-danger" (click)="cancel()">{{ 'CANCEL' | translate }}</button>
+      <button *ngIf="form.Valid" type="button" class="btn btn-danger" (click)="submit(form)">{{ 'SAVE' | translate }}</button>
+      <button *ngIf="!form.Valid" type="button" class="btn btn-danger" disabled>{{ 'SAVE' | translate }}</button>
     </div>
   </div>
 </ng-template>
@@ -23,8 +23,8 @@
   <div class="col-xs-2">{{user.city}}, {{user.street}} {{user.houseNumber}}</div>
   <div class="col-xs-2">
     <div class="btn-group fullWidth" role="group" aria-label="Edit user">
-      <button type="button" class="btn btn-primary halfWidth" (click)="openModalEdit()">Edit</button>
-      <button type="button" class="btn btn-danger halfWidth" (click)="delete()">Delete</button>
+      <button type="button" class="btn btn-primary halfWidth" (click)="openModalEdit()">{{ 'EDIT' | translate }}</button>
+      <button type="button" class="btn btn-danger halfWidth" (click)="delete()">{{ 'DELETE' | translate }}</button>
     </div>
   </div>
 </div>
@@ -37,6 +37,6 @@
   <div class="col-xs-2">{{user.mobileNumber}}</div>
   <div class="col-xs-2">{{user.city}}, {{user.street}} {{user.houseNumber}}</div>
   <div class="col-xs-2">
-    <button type="button" class="btn btn-primary fullWidth" disabled>Deleted</button>
+    <button type="button" class="btn btn-primary fullWidth" disabled>{{ 'DELETED' | translate }}</button>
   </div>
 </div>
