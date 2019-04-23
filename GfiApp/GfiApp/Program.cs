@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
+using Service = GfiApp.Service;
 namespace GfiApp
 {
     public class Program
@@ -19,6 +20,10 @@ namespace GfiApp
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureServices( service =>
+                {
+                    service.AddSingleton(typeof(Service.IUserService), typeof(Service.UserService));
+                })
                 .UseStartup<Startup>();
     }
 }

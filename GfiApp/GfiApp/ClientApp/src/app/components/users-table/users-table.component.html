@@ -1,21 +1,54 @@
+<ng-template #modalTemplate let-modal>
+  <div class="modal-header">
+    Edit - {{modalUser.name}} {{modalUser.surname}}
+  </div>
+  <div class="modal-body">
+    <app-user-edit-form [user]="modalUser" #form></app-user-edit-form>
+  </div>
+  <div class="modal-footer">
+    <div class="btn-group" role="group" aria-label="Edit user">
+      <button type="button" class="btn btn-danger" (click)="canceModal()">Cancel</button>
+      <button *ngIf="!modalNextButtonDisabled" type="button" class="btn btn-danger" (click)="nextModal()">Next</button>
+
+      <button *ngIf="form.Valid && !modalNextButtonDisabled" type="button" class="btn btn-danger" (click)="submitNextModal(form)">Save and Next</button>
+      <button *ngIf="!form.Valid && !modalNextButtonDisabled" type="button" class="btn btn-danger" disabled>Save and Next</button>
+
+      <button *ngIf="form.Valid && modalNextButtonDisabled" type="button" class="btn btn-danger" (click)="submitNextModal(form)">Save</button>
+      <button *ngIf="!form.Valid && modalNextButtonDisabled" type="button" class="btn btn-danger" disabled>Save</button>
+    </div>
+  </div>
+</ng-template>
+
 <div class="container-fluid">
   <div class="col-xs-12">
     <ul class="list-group">
       <li class="list-group-item">
         <div class="container-fluid">
-          <div class="col-xs-1">id</div>
-          <div class="col-xs-2">name</div>
-          <div class="col-xs-2">surname</div>
-          <div class="col-xs-1">date of birth</div>
-          <div class="col-xs-2">mobile number</div>
-          <div class="col-xs-2">address(city + street + house number)</div>
-          <div class="col-xs-2">
-            <button type="button" class="btn btn-block btn-primary">Edit</button>
+          <div class="col-xs-1">
+
+          </div>
+          <div class="col-xs-11">
+            <div class="col-xs-1">id</div>
+            <div class="col-xs-2">name</div>
+            <div class="col-xs-2">surname</div>
+            <div class="col-xs-1">date of birth</div>
+            <div class="col-xs-2">mobile number</div>
+            <div class="col-xs-2">address(city + street + house number)</div>
+            <div class="col-xs-2">
+              <button type="button" class="btn btn-block btn-primary" (click)="openModal()">Edit</button>
+            </div>
           </div>
         </div>
       </li>
       <li class="list-group-item" *ngFor="let user of Users">
-        <app-users-table-row [user]="user"></app-users-table-row>
+        <div class="container-fluid">
+          <div class="col-xs-1">
+            <input type="checkbox" class="form-check-input" [checked]="checkedEdit(user.id)" (click)="toggleEdit(user.id)">
+          </div>
+          <div class="col-xs-11">
+            <app-users-table-row [user]="user"></app-users-table-row>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

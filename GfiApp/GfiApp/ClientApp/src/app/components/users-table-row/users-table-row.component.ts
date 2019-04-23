@@ -11,6 +11,7 @@ import { UserService } from '../../service/user.service';
 export class UsersTableRowComponent implements OnInit {
   @ViewChild('modalTemplate') modalTemplate;
   @Input('user') user: User;
+  public deleted: boolean = false;
   public modalRef: NgbModalRef;
   constructor(
     private modalService: NgbModal,
@@ -25,6 +26,11 @@ export class UsersTableRowComponent implements OnInit {
   }
   cancel() {
     this.modalRef.close();
+  }
+  delete() {
+    console.log('delete');
+    this.userService.DeleteUser(this.user);
+    this.deleted = true;
   }
 
   ngOnInit() {

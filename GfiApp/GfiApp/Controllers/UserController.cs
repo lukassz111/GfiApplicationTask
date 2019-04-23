@@ -2,71 +2,61 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GfiApp.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Service = GfiApp.Service;
+using Model = GfiApp.Model;
 namespace GfiApp.Controllers
 {
     [Route("api/[controller]")]
     public class UserController : Controller
     {
-        [HttpGet("[action]")]
-        public IEnumerable<User> List()
-        {
-            var users = new List<User>(4);
+        private Service.IUserService userService;
 
-            var user1 = new User
+        public UserController(Service.IUserService userService)
+        {
+            this.userService = userService;
+        }
+        
+        public IEnumerable<int> Index()
+        {
+            var users = userService.getUsers();
+            List<int> ids = new List<int>(users.Count);
+            foreach(var user in users)
             {
-                id = 1,
-                name = "Rufus",
-                surname = "Dubois",
-                dateOfBirth = "12-03-1997",
-                mobileNumber = 748045516,
-                city = "Lyon",
-                street = "Baltimore",
-                houseNumber = 0
-            };
-            var user2 = new User
+                ids.Add(user.id);
+            }
+            return ids;
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Model.User> Details(int id)
+        {
+            var users = userService.getUsers();
+            foreach(var user in users)
             {
-                id = 2,
-                name = "Alexander",
-                surname = "Adams",
-                dateOfBirth = "12-03-1997",
-                mobileNumber = 863885255,
-                city = "Houston",
-                street = "Zurich",
-                houseNumber = 0
-            };
-            var user3 = new User
-            {
-                id = 3,
-                name = "Moira",
-                surname = "Rowlands",
-                dateOfBirth = "12-03-1997",
-                mobileNumber = 708056463,
-                city = "Escondido",
-                street = "Moreno Valley",
-                houseNumber = 0
-            };
-            users.Add(user1);
-            users.Add(user2);
-            users.Add(user3);
-            return users;
+                if(user.id == id)
+                    return Ok(user);
+            }
+            return NotFound(null);
+        }
+
+        [HttpPost("{id}")]
+        public ActionResult Edit(int id, [FromBody] Model.User user)
+        {
+            if(id != user.id)
+                return BadRequest();
+            if (userService.updateUser(user))
+                return Ok();
+            return NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            return Ok(userService.deleteUser(id));
         }
         /*
-        // GET: User
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: User/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: User/Create
         public ActionResult Create()
         {
