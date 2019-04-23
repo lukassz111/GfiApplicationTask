@@ -1,0 +1,34 @@
+{
+  "EDIT": "Edit",
+  "DELETE": "Delete",
+  "ID": "Id",
+  "NAME": "Name",
+  "SURNAME": "Surname",
+  "DATE_OF_BIRTH": "Date of birth",
+  "MOBILE_NUMBER": "Mobile number",
+  "ADDRESS": "address(city + street + house number)",
+  "CITY": "City",
+  "STREET": "Street",
+  "HOUSE_NUMBER": "House number",
+
+  "CANCEL": "Cancel",
+  "SAVE": "Save",
+  "NEXT": "Next",
+  "SAVE_AND_NEXT": "Save and next",
+
+  "VALID": {
+    "REQUIRED": "Required",
+    "IVALID_DATA_FORMAT": "Invalid data format",
+    "NEEDED_CHARACTERS": "Required, {{value}} characters"
+  },
+
+  "ENTER": {
+    "NAME": "Enter name",
+    "SURNAME": "Enter surname",
+    "DATE_OF_BIRTH": "Enter date of birth (dd-mm-yyyy)",
+    "MOBILE_NUMBER": "Enter mobile number",
+    "CITY": "Enter city",
+    "STREET": "Enter street",
+    "HOUSE_NUMBER":  "Enter house number"
+  }
+}

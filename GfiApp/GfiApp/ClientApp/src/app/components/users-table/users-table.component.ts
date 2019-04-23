@@ -18,7 +18,7 @@ export class UsersTableComponent implements OnInit {
     if (isUndefined(this.multiEditList.find(x => x == user_id))) {
       this.multiEditList.push(user_id);
     }
-    this.multiEditList.sort((a, b) => { return a - b });
+    this.multiEditList.sort((a, b) => { return b - a });
   }
   public checkedEdit(user_id: number): boolean {
     return !isUndefined(this.multiEditList.find(x => x == user_id));
@@ -53,7 +53,6 @@ export class UsersTableComponent implements OnInit {
   }
   public submitModal(form: UserEditFormComponent): void {
     var user: User = form.submit();
-    console.log(user);
     this.userService.UpdateUser(user);
   }
   public submitNextModal(form: UserEditFormComponent): void {
@@ -61,12 +60,12 @@ export class UsersTableComponent implements OnInit {
     this.nextModal();
   }
   private get nextUserToEdit(): User{
-    console.log(this.multiEditList);
     if (this.multiEditList.length <= 0)
       return undefined;
     this.modalNextButtonDisabled = (this.multiEditList.length == 1);
-    var index = this.multiEditList.pop(); 
-    return this.Users[index];;
+    var user_id = this.multiEditList.pop();
+    var user = this.Users.find(x => x.id == user_id);
+    return user;
   }
   public nextModal(): void {
     this.modalRef.close();

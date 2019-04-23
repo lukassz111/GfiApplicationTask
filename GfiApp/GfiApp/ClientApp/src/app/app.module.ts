@@ -13,6 +13,7 @@ import { UsersTableRowComponent } from './components/users-table-row/users-table
 import { UserService } from './service/user.service';
 import { UserEditFormComponent } from './components/user-edit-form/user-edit-form.component';
 import { FormValidInfoComponent } from './components/form-valid-info/form-valid-info.component';
+import { SwitchLangComponent } from './components/switch-lang/switch-lang.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http,'./assets/i18n/','.json');
@@ -24,7 +25,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     UsersTableComponent,
     UsersTableRowComponent,
     UserEditFormComponent,
-    FormValidInfoComponent
+    FormValidInfoComponent,
+    SwitchLangComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
